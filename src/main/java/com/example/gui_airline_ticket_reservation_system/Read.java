@@ -2,7 +2,6 @@ package com.example.gui_airline_ticket_reservation_system;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Hashtable;
 import java.util.Scanner;
 
 public abstract class Read {
