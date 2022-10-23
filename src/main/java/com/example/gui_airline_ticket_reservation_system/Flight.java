@@ -6,6 +6,8 @@ public class Flight implements Comparable<Flight> {
     private String source;
     private String destination;
     private int capacity;
+    private LinkedList<Passenger> passengerList = new LinkedList<>();
+
 
     //parametrized Constructor
     public Flight(int flightNumber, String airLineName, String source, String destination, int capacity) {
@@ -54,6 +56,14 @@ public class Flight implements Comparable<Flight> {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public LinkedList<Passenger> getPassengerList() {
+        return passengerList;
+    }
+
+    public void setPassengerList(LinkedList<Passenger> passengerList) {
+        this.passengerList = passengerList;
     }
 
     // we Override equals Method because we will search by Flight number
