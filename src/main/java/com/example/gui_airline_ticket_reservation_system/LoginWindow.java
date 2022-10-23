@@ -90,7 +90,9 @@ public class LoginWindow {
         //Scene
         Scene mainScene = new Scene(rootPane);
         mainStage.setScene(mainScene);
-        mainStage.setTitle("Read Files ");
+        mainStage.setTitle("Login");
+        mainStage.resizableProperty().setValue(false);
+
         //icon for login page
         mainStage.getIcons().add(icon);
         mainStage.show();
