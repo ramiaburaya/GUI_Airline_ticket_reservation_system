@@ -9,11 +9,18 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 
 public class ReadWindow {
+    private final FileChooser fileChooser = new FileChooser();
+
     public void ReadWin() {
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
+
         Stage mainStage = new Stage();
 
         AnchorPane rootPane = new AnchorPane();
@@ -35,6 +42,12 @@ public class ReadWindow {
         ReadFlights.setLayoutY(153);
         ReadFlights.setStyle(LoginWindow.ButtonColor);
         ReadFlights.setCursor(Cursor.HAND);
+        ReadFlights.setOnAction(e -> {
+            fileChooser.setTitle("Read flights file");
+
+            File SelectedFile = fileChooser.showOpenDialog(mainStage);
+
+        });
 
         Button ReadPassenger = new Button("Read Passengers");
         ReadPassenger.setPrefSize(150, 30);
@@ -42,7 +55,12 @@ public class ReadWindow {
         ReadPassenger.setLayoutY(216);
         ReadPassenger.setStyle(LoginWindow.ButtonColor);
         ReadPassenger.setCursor(Cursor.HAND);
+        ReadPassenger.setOnAction(e -> {
+            fileChooser.setTitle("Read passenger file");
 
+            File SelectedFile = fileChooser.showOpenDialog(mainStage);
+
+        });
 
         Button LogOut = new Button("LogOut");
         LogOut.setPrefSize(70, 30);
