@@ -59,4 +59,12 @@ public class LinkedList<T extends Comparable<T>> {
             return curr;
         }
     }
+
+    public boolean isEmpty() {
+        return head == null;
+    }
+
+
+
+
 }
