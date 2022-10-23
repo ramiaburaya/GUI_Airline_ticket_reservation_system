@@ -2,6 +2,7 @@ package com.example.gui_airline_ticket_reservation_system;
 
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,8 +12,6 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.io.File;
 
 
 public class ReadWindow {
@@ -44,9 +43,7 @@ public class ReadWindow {
         ReadFlights.setCursor(Cursor.HAND);
         ReadFlights.setOnAction(e -> {
             fileChooser.setTitle("Read flights file");
-
-            File SelectedFile = fileChooser.showOpenDialog(mainStage);
-
+            Read.readFlights(fileChooser.showOpenDialog(mainStage));
         });
 
         Button ReadPassenger = new Button("Read Passengers");
@@ -56,9 +53,16 @@ public class ReadWindow {
         ReadPassenger.setStyle(LoginWindow.ButtonColor);
         ReadPassenger.setCursor(Cursor.HAND);
         ReadPassenger.setOnAction(e -> {
-            fileChooser.setTitle("Read passenger file");
 
-            File SelectedFile = fileChooser.showOpenDialog(mainStage);
+            if (!Read.flightsRecord.isEmpty()) {
+                fileChooser.setTitle("Read passenger file");
+                Read.readPassengers(fileChooser.showOpenDialog(mainStage));
+            } else {
+                Alert WARNING = new Alert(Alert.AlertType.WARNING);
+                WARNING.setTitle("Very Important");
+                WARNING.setContentText("Read Flights Info First");
+                WARNING.show();
+            }
 
         });
 
