@@ -7,7 +7,8 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) {
-        //here where the program should start
+        LoginWindow s = new LoginWindow();
+        s.printLoginWindow();
     }
 
     public static void main(String[] args) {
