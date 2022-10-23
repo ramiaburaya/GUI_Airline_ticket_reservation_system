@@ -1,17 +1,15 @@
 package com.example.gui_airline_ticket_reservation_system;
 
-import java.util.Date;
-
 public class Passenger implements Comparable<Passenger> {
     private int flightNumber;
     private int ticketNumber;
     private String fullName;
     private String passportNumber;
     private String nationality;
-    private Date birthdate;
+    private String birthdate;
 
     //parametrized Constructor
-    public Passenger(int flightNumber, int ticketNumber, String fullName, String passportNumber, String nationality, Date birthdate) {
+    public Passenger(int flightNumber, int ticketNumber, String fullName, String passportNumber, String nationality, String birthdate) {
         this.flightNumber = flightNumber;
         this.ticketNumber = ticketNumber;
         this.fullName = fullName;
@@ -60,11 +58,11 @@ public class Passenger implements Comparable<Passenger> {
         this.nationality = nationality;
     }
 
-    public Date getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -78,5 +76,10 @@ public class Passenger implements Comparable<Passenger> {
     @Override
     public int compareTo(Passenger o) {
         return this.getFullName().compareTo(o.getFullName());
+    }
+
+    @Override
+    public String toString() {
+        return flightNumber + " " + ticketNumber + " " + fullName + " " + passportNumber + " " + nationality + " " + birthdate + " ";
     }
 }
