@@ -9,6 +9,8 @@ public class HelloApplication extends Application {
     public void start(Stage stage) {
         LoginWindow s = new LoginWindow();
         s.printLoginWindow();
+
+
     }
 
     public static void main(String[] args) {

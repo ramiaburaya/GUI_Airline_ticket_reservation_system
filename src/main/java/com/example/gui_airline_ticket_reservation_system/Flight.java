@@ -74,4 +74,14 @@ public class Flight implements Comparable<Flight> {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "flightNumber=" + flightNumber +
+                ", airLineName='" + airLineName + '\'' +
+                ", source='" + source + '\'' +
+                ", destination='" + destination + '\'' +
+                ", capacity=" + capacity +
+                '}';
+    }
 }
