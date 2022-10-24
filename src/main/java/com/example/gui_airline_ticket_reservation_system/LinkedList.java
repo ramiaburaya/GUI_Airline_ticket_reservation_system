@@ -64,6 +64,17 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         }
     }
 
+    public String Display() {
+        String s = "";
+        Node<T> current = head;
+        while (current != null) {
+            s += current + "\n"; // the current will calling to String method
+            current = current.getNext();
+        }
+        System.out.println();
+        return s;
+    }
+
     @Override
     public int size() {
         return 0;
