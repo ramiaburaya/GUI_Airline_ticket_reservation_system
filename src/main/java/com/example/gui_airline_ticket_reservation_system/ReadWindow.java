@@ -57,6 +57,9 @@ public class ReadWindow {
             if (!Read.flightsRecord.isEmpty()) {
                 fileChooser.setTitle("Read passenger file");
                 Read.readPassengers(fileChooser.showOpenDialog(mainStage));
+                    mainStage.close();
+                    MenuWindow menuWindow = new MenuWindow();
+                    menuWindow.PrintMenuWindow();
             } else {
                 Alert WARNING = new Alert(Alert.AlertType.WARNING);
                 WARNING.setTitle("Very Important");
