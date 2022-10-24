@@ -7,7 +7,6 @@ import java.util.ListIterator;
 
 public class LinkedList<T extends Comparable<T>> implements List<T> {
     private Node<T> head;
-    private Node<T> current;
 
     public void insert(T data) {
         Node<T> newNode = new Node<>(data);
