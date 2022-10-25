@@ -6,7 +6,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class MenuWindow {
@@ -19,6 +22,7 @@ public class MenuWindow {
         //rootPane
         AnchorPane rootPane = new AnchorPane();
         rootPane.setPrefSize(1366, 768);
+        rootPane.setBackground(new Background(new BackgroundFill(Color.rgb(205, 252, 246), null, null)));
 
         //Second AnchorPane
         AnchorPane secondPane = new AnchorPane();
@@ -58,7 +62,8 @@ public class MenuWindow {
         displayFlight.setCursor(Cursor.HAND);
         displayFlight.setOnAction(e -> {
             secondPane.getChildren().clear();
-            secondPane.getChildren().addAll(listView, multiButton);
+            secondPane.getChildren().addAll(multiButton, listView);
+
             multiButton.setText("Display");
             multiButton.setOnAction(x -> listView.setText("****************************************************************************************************************" +
                     "*********** Flights **********************************************************" +
@@ -71,8 +76,14 @@ public class MenuWindow {
         displayPassenger.setPrefSize(prefWidth, prefHeight);
         displayPassenger.setCursor(Cursor.HAND);
         displayPassenger.setOnAction(e -> {
+            secondPane.getChildren().clear();
+            secondPane.getChildren().addAll(multiButton, listView);
+
             multiButton.setText("Display");
             listView.setText("");
+            multiButton.setOnAction(x -> listView.setText("****************************************************************************************************************" +
+                    "*********** Passengers **********************************************************" +
+                    "******************************************************************************\n" + Read.DisplayPassenger()));
         });
 
         Button modifyFlights = new Button("Add & Edit flights");
@@ -80,10 +91,12 @@ public class MenuWindow {
         modifyFlights.setPrefSize(prefWidth, prefHeight);
         modifyFlights.setCursor(Cursor.HAND);
         modifyFlights.setOnAction(e -> {
+            secondPane.getChildren().clear();
+            secondPane.getChildren().addAll(multiButton, listView);
 
             multiButton.setText("Modify");
             listView.setText("");
-
+            multiButton.setOnAction(x -> listView.setText("modify Flights"));
         });
 
         Button reserveTicket = new Button("Reserve a ticket");
@@ -91,9 +104,12 @@ public class MenuWindow {
         reserveTicket.setPrefSize(prefWidth, prefHeight);
         reserveTicket.setCursor(Cursor.HAND);
         reserveTicket.setOnAction(e -> {
+            secondPane.getChildren().clear();
+            secondPane.getChildren().addAll(multiButton, listView);
 
             multiButton.setText("Reserve");
             listView.setText("");
+            multiButton.setOnAction(x -> listView.setText("reserve Ticket"));
 
         });
 
@@ -102,9 +118,12 @@ public class MenuWindow {
         cancelReservation.setPrefSize(prefWidth, prefHeight);
         cancelReservation.setCursor(Cursor.HAND);
         cancelReservation.setOnAction(e -> {
+            secondPane.getChildren().clear();
+            secondPane.getChildren().addAll(multiButton, listView);
 
             multiButton.setText("Cancel");
             listView.setText("");
+            multiButton.setOnAction(x -> listView.setText("cancel Reservation"));
 
         });
 
@@ -113,9 +132,12 @@ public class MenuWindow {
         checkTicket.setPrefSize(prefWidth, prefHeight);
         checkTicket.setCursor(Cursor.HAND);
         checkTicket.setOnAction(e -> {
+            secondPane.getChildren().clear();
+            secondPane.getChildren().addAll(multiButton, listView);
 
             multiButton.setText("Check");
             listView.setText("");
+            multiButton.setOnAction(x -> listView.setText("checkTicket"));
 
         });
 
@@ -124,9 +146,12 @@ public class MenuWindow {
         searchPassenger.setPrefSize(prefWidth, prefHeight);
         searchPassenger.setCursor(Cursor.HAND);
         searchPassenger.setOnAction(e -> {
+            secondPane.getChildren().clear();
+            secondPane.getChildren().addAll(multiButton, listView);
 
             multiButton.setText("Search");
             listView.setText("");
+            multiButton.setOnAction(x -> listView.setText("search Passenger"));
 
         });
 
