@@ -2,6 +2,8 @@ package com.example.gui_airline_ticket_reservation_system;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public abstract class Read {
@@ -25,7 +27,7 @@ public abstract class Read {
 
             }
             flightsRecord.sort();
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             System.out.println("File not found.");
         }
     }
@@ -55,5 +57,16 @@ public abstract class Read {
         }
     }
 
+    public static String DisplayPassenger() {
+        String s = "";
+        Iterator<Flight> b = flightsRecord.iterator();
+
+        while (b.hasNext()) {
+            Flight x = b.next();
+            s += "***** Flight Number : " + x.getFlightNumber() + "  ***** " + "\n" + x.getPassengerList().Display() + "\n";
+
+        }
+        return s;
+    }
 
 }

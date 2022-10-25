@@ -80,6 +80,7 @@ public class Passenger implements Comparable<Passenger> {
 
     @Override
     public String toString() {
-        return flightNumber + " " + ticketNumber + " " + fullName + " " + passportNumber + " " + nationality + " " + birthdate + " ";
+        return "flight Number : " + flightNumber + ", ticketNumber : " + ticketNumber + ", fullName : " + fullName +
+                ", passport Number : " + passportNumber + ", nationality : " + nationality + ", birthdate : " + birthdate + "\n";
     }
 }
