@@ -141,6 +141,7 @@ public class MenuWindow {
             loginWindow.printLoginWindow();
             menuStage.close();
         });
+
         buttonPane.getChildren().addAll(displayFlight, displayPassenger, modifyFlights, reserveTicket, cancelReservation, checkTicket, searchPassenger);
 
 
