@@ -3,8 +3,7 @@ package com.example.gui_airline_ticket_reservation_system;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -92,11 +91,108 @@ public class MenuWindow {
         modifyFlights.setCursor(Cursor.HAND);
         modifyFlights.setOnAction(e -> {
             secondPane.getChildren().clear();
-            secondPane.getChildren().addAll(multiButton, listView);
 
-            multiButton.setText("Modify");
-            listView.setText("");
-            multiButton.setOnAction(x -> listView.setText("modify Flights"));
+            //Labels
+            Label flightNumberLabel = new Label("Flight Number");
+            flightNumberLabel.setLayoutX(511);
+            flightNumberLabel.setLayoutY(96);
+            flightNumberLabel.setPrefSize(100, 20);
+
+            Label airLineNameLabel = new Label("AirLine Name");
+            airLineNameLabel.setLayoutX(511);
+            airLineNameLabel.setLayoutY(145);
+            airLineNameLabel.setPrefSize(100, 20);
+
+            Label sourceLabel = new Label("Source");
+            sourceLabel.setLayoutX(511);
+            sourceLabel.setLayoutY(195);
+            sourceLabel.setPrefSize(100, 20);
+
+            Label destinationLabel = new Label("Destination");
+            destinationLabel.setLayoutX(511);
+            destinationLabel.setLayoutY(237);
+            destinationLabel.setPrefSize(100, 20);
+
+            Label capacityLabel = new Label("Capacity");
+            capacityLabel.setLayoutX(511);
+            capacityLabel.setLayoutY(278);
+            capacityLabel.setPrefSize(100, 20);
+
+
+            //TextField
+            TextField flightNumberTxt = new TextField();
+            flightNumberTxt.setLayoutX(612);
+            flightNumberTxt.setLayoutY(93);
+
+            TextField airLineNameTxt = new TextField();
+            airLineNameTxt.setLayoutX(612);
+            airLineNameTxt.setLayoutY(142);
+
+            TextField sourceTxt = new TextField();
+            sourceTxt.setLayoutX(612);
+            sourceTxt.setLayoutY(192);
+
+            TextField destinationTxt = new TextField();
+            destinationTxt.setLayoutX(612);
+            destinationTxt.setLayoutY(234);
+
+            TextField capacityTxt = new TextField();
+            capacityTxt.setLayoutX(612);
+            capacityTxt.setLayoutY(275);
+
+            Button Edit = new Button("Modify");
+            Edit.setStyle(LoginWindow.ButtonColor);
+            Edit.setPrefSize(prefWidth, prefHeight);
+            Edit.setCursor(Cursor.HAND);
+            Edit.setLayoutX(436);
+            Edit.setLayoutY(518);
+            Edit.setDisable(true);
+
+
+            multiButton.setText("Search");
+            multiButton.setOnAction(x -> {
+                Node<Flight> Search = null;
+                if (!flightNumberTxt.getText().trim().equals("")) {
+                    Search = Read.flightsRecord.search(new Flight(Integer.parseInt(flightNumberTxt.getText().trim()), null, null, null, 0));
+
+                } else {
+                    Alert Error = new Alert(Alert.AlertType.ERROR);
+                    Error.setTitle("Empty");
+                    Error.setContentText("Please Enter Flight Number");
+                    Error.show();
+                }
+                if (Search != null) {
+                    flightNumberTxt.setText(String.valueOf(Search.getData().getFlightNumber()));
+                    airLineNameTxt.setText(Search.getData().getAirLineName());
+                    sourceTxt.setText(Search.getData().getSource());
+                    destinationTxt.setText(Search.getData().getDestination());
+                    capacityTxt.setText(String.valueOf(Search.getData().getCapacity()));
+                    Edit.setDisable(false);
+                    Node<Flight> finalSearch = Search;
+                    Edit.setOnAction(q -> {
+                        if (!flightNumberTxt.getText().equals("") && !airLineNameTxt.getText().equals("") && !sourceTxt.getText().equals("")
+                                && !destinationTxt.getText().equals("") && !capacityTxt.getText().equals("")) {
+                            finalSearch.getData().setFlightNumber(Integer.parseInt(flightNumberTxt.getText()));
+                            finalSearch.getData().setAirLineName(airLineNameTxt.getText());
+                            finalSearch.getData().setSource(sourceTxt.getText());
+                            finalSearch.getData().setDestination(destinationTxt.getText());
+                            finalSearch.getData().setCapacity(Integer.parseInt(capacityTxt.getText()));
+                            Alert Done = new Alert(Alert.AlertType.CONFIRMATION);
+                            Done.setTitle("Done");
+                            Done.setContentText("Done");
+                            Done.show();
+                        }
+                    });
+                } else {
+                    Alert Error = new Alert(Alert.AlertType.ERROR);
+                    Error.setTitle("Not Exist");
+                    Error.setContentText("Not Exist Flight ");
+                    Error.show();
+                }
+            });
+            secondPane.getChildren().addAll(flightNumberLabel, flightNumberTxt, airLineNameLabel, airLineNameTxt, sourceLabel, sourceTxt, destinationLabel, destinationTxt,
+                    capacityLabel, capacityTxt, multiButton,Edit);
+
         });
 
         Button reserveTicket = new Button("Reserve a ticket");
