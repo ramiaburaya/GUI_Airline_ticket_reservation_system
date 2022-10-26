@@ -3,7 +3,6 @@ package com.example.gui_airline_ticket_reservation_system;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public abstract class Read {
@@ -59,10 +58,8 @@ public abstract class Read {
 
     public static String DisplayPassenger() {
         String s = "";
-        Iterator<Flight> b = flightsRecord.iterator();
 
-        while (b.hasNext()) {
-            Flight x = b.next();
+        for (Flight x : flightsRecord) {
             s += "***** Flight Number : " + x.getFlightNumber() + "  ***** " + "\n" + x.getPassengerList().Display() + "\n";
 
         }

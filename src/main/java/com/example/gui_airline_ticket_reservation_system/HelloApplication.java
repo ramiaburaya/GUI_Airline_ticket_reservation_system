@@ -1,5 +1,4 @@
 package com.example.gui_airline_ticket_reservation_system;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 
