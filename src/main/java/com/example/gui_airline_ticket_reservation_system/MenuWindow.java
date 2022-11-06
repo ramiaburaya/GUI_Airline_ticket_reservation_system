@@ -191,7 +191,7 @@ public class MenuWindow {
                 }
             });
             secondPane.getChildren().addAll(flightNumberLabel, flightNumberTxt, airLineNameLabel, airLineNameTxt, sourceLabel, sourceTxt, destinationLabel, destinationTxt,
-                    capacityLabel, capacityTxt, multiButton,Edit);
+                    capacityLabel, capacityTxt, multiButton, Edit);
 
         });
 
@@ -199,15 +199,7 @@ public class MenuWindow {
         reserveTicket.setStyle(LoginWindow.ButtonColor);
         reserveTicket.setPrefSize(prefWidth, prefHeight);
         reserveTicket.setCursor(Cursor.HAND);
-        reserveTicket.setOnAction(e -> {
-            secondPane.getChildren().clear();
-            secondPane.getChildren().addAll(multiButton, listView);
-
-            multiButton.setText("Reserve");
-            listView.setText("");
-            multiButton.setOnAction(x -> listView.setText("reserve Ticket"));
-
-        });
+        reserveTicket.setOnAction(e -> secondPane.getChildren().clear());
 
         Button cancelReservation = new Button("Cancel a reservation");
         cancelReservation.setStyle(LoginWindow.ButtonColor);

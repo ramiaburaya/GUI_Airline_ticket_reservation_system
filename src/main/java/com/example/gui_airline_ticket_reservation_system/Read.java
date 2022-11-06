@@ -66,4 +66,13 @@ public abstract class Read {
         return s;
     }
 
+    public static int GetLargeTicket() {
+        int large = flightsRecord.getHead().getData().getPassengerList().getHead().getData().getTicketNumber();
+        for (Flight x : flightsRecord) {
+            if (x.getPassengerList().getHead().getData().getTicketNumber() > large) {
+                large = x.getPassengerList().getHead().getData().getTicketNumber();
+            }
+        }
+        return large;
+    }
 }

@@ -72,6 +72,14 @@ public class Passenger implements Comparable<Passenger> {
         return this.getFullName().equals(((Passenger) o).getFullName());
     }
 
+
+    public int getHighestTicket(Passenger o) {
+        if (this.getTicketNumber() > o.ticketNumber) {
+            return 1;
+        }
+        return -1;
+    }
+
     // we  Override this because we will insert passenger in linked list sorted
     @Override
     public int compareTo(Passenger o) {

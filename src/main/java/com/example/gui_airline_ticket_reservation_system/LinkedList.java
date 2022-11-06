@@ -75,6 +75,8 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         return s;
     }
 
+
+
     @Override
     public int size() {
         return 0;

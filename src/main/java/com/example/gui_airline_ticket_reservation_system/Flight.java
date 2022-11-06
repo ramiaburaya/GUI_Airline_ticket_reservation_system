@@ -72,6 +72,10 @@ public class Flight implements Comparable<Flight> {
         return this.getFlightNumber() == ((Flight) o).getFlightNumber();
     }
 
+    public int getLargestTicket() {
+        return 0;
+    }
+
     // we Override compareTo Method because we will insert Flight in linked list Sorted
     @Override
     public int compareTo(Flight o) {
